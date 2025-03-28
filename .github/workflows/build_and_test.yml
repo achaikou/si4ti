@@ -84,15 +84,7 @@ jobs:
 
     - name: Install Boost
       run: |
-        wget https://archives.boost.io/release/1.79.0/source/boost_1_79_0.tar.gz
-        ls -l
-        tar xf boost_1_79_0.tar.gz
-        pushd boost_1_79_0
-        scl enable gcc-toolset-13 "./bootstrap.sh --with-libraries=math"
-        scl enable gcc-toolset-13 "./b2 -j 2"
-        scl enable gcc-toolset-13 "./b2 install"
-        popd
-        rm -rf boost_1_79_0
+        dnf -y install boost-devel
 
     - name: Build and install segyio
       run: |
