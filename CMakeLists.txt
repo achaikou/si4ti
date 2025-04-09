@@ -14,7 +14,6 @@ find_package(OpenMP COMPONENTS CXX REQUIRED)
 find_package(segyio REQUIRED)
 find_library(fftw3 NAMES fftw3 REQUIRED)
 find_library(fftw3f NAMES fftw3f REQUIRED)
-find_path(fftw3_includes NAMES "fftw3.h" REQUIRED)
 
 option(BUILD_DOC "Build documentation" OFF)
 option(USE_FFTW "Build with fftw" OFF)
