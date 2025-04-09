@@ -81,7 +81,10 @@ jobs:
         dnf -y install dnf-plugins-core
         dnf -y config-manager --set-enabled powertools
         dnf -y group install 'Development Tools'
-        dnf -y install fftw3-devel gcc-toolset-13 eigen3-devel cmake wget python3.11
+        dnf -y install gcc-toolset-13 eigen3-devel cmake wget python3.11
+        mkdir /weird
+        dnf -y --installroot=/weird --releasever=/ install fftw3-devel
+        ls /weird
 
     - uses: actions/checkout@v4
       with:
