@@ -84,7 +84,8 @@ jobs:
         dnf -y install gcc-toolset-13 eigen3-devel cmake wget python3.11
         mkdir /weird
         dnf -y --installroot=/weird --releasever=/ install fftw3-devel
-        ls /weird
+        ls -l /weird/usr/lib64
+        ls -l /weird/usr/include
 
     - uses: actions/checkout@v4
       with:
@@ -139,6 +140,7 @@ jobs:
       run: |
         python --version
         which python
+        export CMAKE_PREFIX_PATH="/weird/usr:$CMAKE_PREFIX_PATH"
         mkdir build
         pushd build
         source scl_source enable gcc-toolset-13 && cmake -DCMAKE_BUILD_TYPE=Release \
