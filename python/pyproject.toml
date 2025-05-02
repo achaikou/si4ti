@@ -46,6 +46,7 @@ test = [
   "pytest",
   "pytest-memray",
   "segyio",
+  "xtgeo"
 ]
 
 [tool.scikit-build]
