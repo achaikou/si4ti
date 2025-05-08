@@ -65,8 +65,12 @@ build = "*"
 # Don't build for PyPy, Win32, i686, and musllinux
 # Cannot build for linux_aarch64 due to missing xtgeo release
 skip = "pp* *-win32 *_i686 *musllinux* *_aarch64"
-test-requires = ["pytest", "pytest-memray"]
-test-command = "cd {project}/python && pytest --memray tests --color=yes -v"
+test-extras = "test"
+test-command = [
+    """cd {project}/python""",
+    """python -c "import si4ti; import inspect; print('before: si4ti loaded from ' + inspect.getfile(si4ti))"""",
+    """pytest --memray tests --color=yes -vvv""",
+]
 build-verbosity = 1
 
 # Some target/architecture specific configuration is set in the GitHub workflow
