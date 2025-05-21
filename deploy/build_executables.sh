@@ -15,6 +15,10 @@ do
 		..
 	scl enable gcc-toolset-13 "make -j"
 	ctest --output-on-failure
+	if [[ "${target_arch}" == "skylake" ]]; then
+		echo "Error: 'skylake' failing to see the outcome."
+		exit 1
+	fi
 	make diff
 	make install
 	popd
